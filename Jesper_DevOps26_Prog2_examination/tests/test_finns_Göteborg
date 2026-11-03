@@ -1,0 +1,13 @@
+
+def test_finns_göteborg():
+    from application.func import get_wheather_data
+    data = get_wheather_data()
+    
+    assert data is not None
+    assert "latitude" in data == 57.71
+    assert "longitude" in data == 11.97
+    assert "daily" in data
+    assert isinstance(data, dict)
+    assert isinstance(data["latitude"], (int, float))
+    assert isinstance(data["current"]["temperature_2m"], (int, float))
+    assert isinstance(data["daily"]["time"], list)

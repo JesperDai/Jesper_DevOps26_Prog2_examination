@@ -1,11 +1,11 @@
 
-def test_finns_göteborg():
+def test_where_is_göteborg():
     from application.func import get_wheather_data
     data = get_wheather_data()
     
     assert data is not None
-    assert "latitude" in data == 57.71
-    assert "longitude" in data == 11.97
+    assert data["latitude"] == 57.71
+    assert data["longitude"] == 11.97
     assert "daily" in data
     assert isinstance(data, dict)
     assert isinstance(data["latitude"], (int, float))

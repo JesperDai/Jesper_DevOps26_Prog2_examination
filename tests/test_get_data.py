@@ -1,10 +1,10 @@
 from unittest.mock import patch
 
-from application.api import hamta_vaderdata
+from application.func import get_weather_data
 
 
-@patch("application.api.requests.get")  #@patch för att ersätta vanliga request.get med en mock
-def test_hamta_vaderdata(mock_get): 
+@patch("application.func.requests.get")  #@patch för att ersätta vanliga request.get med en mock
+def test_get_weather_data(mock_get): 
     mock_get.return_value.json.return_value = { #fejk data som tas emot
 
         "latitude":59.33,
@@ -18,7 +18,7 @@ def test_hamta_vaderdata(mock_get):
 
     mock_get.return_value.raise_for_status.return_value = None # raise_for_status under lyckad anrop ska ge ut värde NONE, annars raise ett felstatus som 404 eller 500.
 
-    data = hamta_vaderdata() #anropar funktion men request.get är fortfarande mockad så inget riktigt anrop ut mot externa API
+    data = get_weather_data(lat=59.33, lon=18.07) #anropar funktion men request.get är fortfarande mockad så inget riktigt anrop ut mot externa API
 
     mock_get.assert_called_once() #hört att det kan vara bra att kolla att API request bara blev kallad en gång och inte flera.
 
@@ -36,5 +36,7 @@ def test_hamta_vaderdata(mock_get):
     assert isinstance(data["latitude"], (int, float))
     assert isinstance(data["daily"]["temperature_2m_mean"], list)
 
-    print("data =", data)
-    print("type =", type(data))
+def test_get_weather_data_with_invalid_coordinates():
+    data = get_weather_data(lat=999, lon=999)  #anropar funktion med ogiltiga koordinater
+
+    assert data is None  #kollar att datan är NONE eftersom koordinaterna är ogiltiga.

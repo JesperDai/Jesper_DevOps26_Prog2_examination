@@ -1,7 +1,7 @@
 
 def test_where_is_göteborg():
     from application.func import get_weather_data
-    data = get_weather_data()
+    data = get_weather_data(lat=57.71, lon=11.97)
     
     assert data is not None
     assert data["latitude"] == 57.71

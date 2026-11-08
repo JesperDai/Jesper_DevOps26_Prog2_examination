@@ -14,9 +14,9 @@ def home():
 @app.route("/weather", methods=["GET", "POST"])
 def filter_data():
 
-# ==========================================
-# List of cities with their coordinates
-# ==========================================
+    # ==========================================
+    # List of cities with their coordinates
+    # ==========================================
     cities = {
         "Stockholm": {"lat": 59.33, "lon": 18.07},
         "Göteborg": {"lat": 57.71, "lon": 11.97},
@@ -25,9 +25,9 @@ def filter_data():
         "Kiruna": {"lat": 67.86, "lon": 20.23},
     }
 
-# ==========================================
-# Select city from form submission and get its coordinates
-# ==========================================
+    # ==========================================
+    # Select city from form submission and get its coordinates
+    # ==========================================
 
     if request.method == "POST":
         selected_city = request.form.get(
@@ -45,24 +45,22 @@ def filter_data():
     if city is None:
         return "Not a city", 400
 
-# ==========================================
-# get weather data for selected city from the extrenal API using the coordinates
-# ==========================================
+    # ==========================================
+    # get weather data for selected city from the extrenal API using the coordinates
+    # ==========================================
 
     weather_data = get_weather_data(lat=city["lat"], lon=city["lon"])
 
-
     if weather_data is None:
         return render_template("503.html"), 503
-
 
     # Check if API request failed before I continue to extract data and convert it to a DataFrame.
     if weather_data is None:
         return render_template("503.html"), 503
 
-# ==========================================
-# Convert JSON data to DataFrame and extract "daily" and "current" weather data
-# ==========================================
+    # ==========================================
+    # Convert JSON data to DataFrame and extract "daily" and "current" weather data
+    # ==========================================
 
     # Extract daily weather data
     daily = weather_data["daily"]
@@ -82,9 +80,9 @@ def filter_data():
     temperature = current["temperature_2m"]
     wind = current["wind_speed_10m"]
 
-# ==========================================
-# return the extracted data to the template for rendering
-# ==========================================
+    # ==========================================
+    # return the extracted data to the template for rendering
+    # ==========================================
 
     return render_template(
         "prognossida.html",

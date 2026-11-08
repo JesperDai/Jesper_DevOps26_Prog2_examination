@@ -22,9 +22,7 @@ def get_weather_data(
 
     try:
         # get skickar anropet, parms bygger ihop URL, timeout gör anrop ge upp efter 10sek utan något svar.
-        weather_data = requests.get(
-            URL, params=params, timeout=10
-        )  
+        weather_data = requests.get(URL, params=params, timeout=10)
         weather_data.raise_for_status()  # 400 och 500 skapas här
         return weather_data.json()
     except requests.exceptions.RequestException as error:

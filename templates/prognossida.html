@@ -1,0 +1,30 @@
+<h1>Väderprognos för {{ city }}</h1>
+
+<h2>Just nu</h2>
+
+<p>Temperatur: {{ temperature }} °C</p>
+<p>Vind: {{ wind }} km/h</p>
+
+<h2>forecast for {{ selected_city }}</h2>
+
+<table class="table"> 
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Maximum Temperature</th>
+            <th>Minimum Temperature</th>
+            <th>Precipitation</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for day in weather_data %}
+        <tr>
+            <td>{{ day.date }}</td>
+            <td>{{ day.max_temp }} °C</td>
+            <td>{{ day.min_temp }} °C</td>
+            <td>{{ day.precipitation }} mm</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

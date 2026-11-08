@@ -1,0 +1,50 @@
+
+<div class="card shadow-sm p-4 my-4">
+<title>Välj en datum att filtrera på</title>
+
+<form method="POST" action="{{ url_for('filter_data') }}" class="w-100">
+
+    <div class="row g-3">
+
+
+            <div style="text-align: center;">
+                <select class="form-select form-select-lg" aria-label="Second select" id="city" name="city">
+                    <option selected>Välj en stad:</option>
+
+                <option value="Stockholm">Stockholm
+                    {% if selected_city == "Stockholm" %} selected {% endif %}>
+                    Stockholm
+                </option>
+
+                <option value="Göteborg">Göteborg
+                    {% if selected_city == "Göteborg" %} selected {% endif %}>
+                    Göteborg
+                </option>
+
+                <option value="Malmö">Malmö
+                    {% if selected_city == "Malmö" %}selected{% endif %}>
+                    Malmö
+                </option>
+
+                <option value="Umeå">Umeå
+                    {% if selected_city == "Umeå" %}selected{% endif %}>
+                    Umeå
+                </option>
+
+                <option value="Kiruna">Kiruna
+                    {% if selected_city == "Kiruna" %}selected{% endif %}>
+                    Kiruna
+                </option>
+
+    
+
+            </select>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+                Visa väderdata
+            </button>
+        </div>
+    </div>
+
+</form>
+</div>

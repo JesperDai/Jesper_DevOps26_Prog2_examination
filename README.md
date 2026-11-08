@@ -97,14 +97,20 @@ Kör samtliga tester med:
 pytest --cov
 ```
 
+```bash
+ruff check
+```
+
+```bash
+ruff format
+```
+
 ## Vidareutveckling
 
 Möjliga framtida förbättringar:
 
 - Fler möjligheter att filtrera och jämföra väderdata.
-- Fler typer av diagram och visualiseringar.
-- Utökad felhantering vid API-anrop.
-- Fler automatiserade tester.
+- typer av diagram och visualiseringar.
 
 ## Författare
 Jesper Dai

@@ -7,9 +7,7 @@ from app import app
 @pytest.fixture
 def klient():
     app.config["TESTING"] = True
-    return (
-        app.test_client()
-    )  # skickar requests utan att starta en web server.
+    return app.test_client()  # skickar requests utan att starta en web server.
 
 
 def test_startsida_works(klient):

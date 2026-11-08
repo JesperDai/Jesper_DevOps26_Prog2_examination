@@ -45,6 +45,7 @@ def test_get_weather_data(mock_get):
     assert isinstance(data["daily"]["temperature_2m_mean"], list)
     assert data["daily"]["time"] == ["2000-01-01"]
 
+
 @patch("application.func.requests.get")
 def test_get_weather_data_with_invalid_coordinates(mock_get):
     data = get_weather_data(
@@ -54,6 +55,7 @@ def test_get_weather_data_with_invalid_coordinates(mock_get):
     assert data is None  # kollar att datan är NONE eftersom koordinaterna är ogiltiga.
     mock_get.assert_not_called()  # kollar att mock_get inte blev kallad eftersom koordinaterna är ogiltiga.
 
+
 @patch("application.func.requests.get")
 def test_API_timeout(mock_get):
 
@@ -62,6 +64,7 @@ def test_API_timeout(mock_get):
     result = get_weather_data(lat=59.33, lon=18.07)
 
     assert result is None
+
 
 @patch(
     "application.func.requests.get"

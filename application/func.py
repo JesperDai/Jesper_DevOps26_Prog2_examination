@@ -7,6 +7,10 @@ def get_weather_data(
     lat=59.33, lon=18.07
 ):  # Funktion som hämtar data, lat och lon är koordinater till stockholm som default. Om man vill hämta data för en annan stad så skickar man med lat och lon som argument.
 
+    # Check that coordinates are valid
+    if not (-90 <= lat <= 90) or not (-180 <= lon <= 180):
+        return None
+
     params = {
         "latitude": lat,
         "longitude": lon,

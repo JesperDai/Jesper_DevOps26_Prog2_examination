@@ -1,3 +1,10 @@
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[project]
+name = "Väderapplikation"
+version = "1.2.6"
+description = "Visar väder för olika städer"
+requires-python = ">=3.15.1"
+dependencies = ["flask", "pandas", "requests", "Jinja2"]

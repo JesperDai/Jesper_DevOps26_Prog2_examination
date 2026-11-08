@@ -34,10 +34,12 @@ def get_weather_data(
 # Testar att func logik fungerar som den ska.
 # ==========================================
 
+
 def berakna_medel(lista):
     return sum(lista) / len(lista)
+
 
 def dela(a, b):
     if b == 0:
         raise ValueError("Division med noll")
-    return a / b   
+    return a / b

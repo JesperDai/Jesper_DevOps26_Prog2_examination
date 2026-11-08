@@ -5,10 +5,11 @@ import requests
 
 from app import app
 
+
 # skapar en fixture eller så kallad miljö där testerna körs med en separat test klient.
 @pytest.fixture
 def klient():
-    app.config["TESTING"] = True  
+    app.config["TESTING"] = True
     return (
         app.test_client()
     )  # skickar requests utan att starta en web server. Den kollar om responsen

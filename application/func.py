@@ -5,7 +5,7 @@ URL = "https://api.open-meteo.com/v1/forecast"
 
 def get_weather_data(
     lat=59.33, lon=18.07
-):  # Funktion som hämtar data, lat och lon är koordinater till stockholm, start och slut är datum
+):  # Funktion som hämtar data, lat och lon är koordinater till stockholm som default. Om man vill hämta data för en annan stad så skickar man med lat och lon som argument.
 
     params = {
         "latitude": lat,
@@ -15,17 +15,18 @@ def get_weather_data(
             "temperature_2m_min",
             "temperature_2m_max",
             "precipitation_sum",
-        ],  # mäter temperatur, medelvärde  och  nederbörd och summan av nederbördet
+        ],
         "timezone": "auto",
         "forecast_days": 3,
     }
 
     try:
+        # get skickar anropet, parms bygger ihop URL, timeout gör anrop ge upp efter 10sek utan något svar.
         weather_data = requests.get(
             URL, params=params, timeout=10
-        )  # get skickar anropet, parms bygger ihop URL, timeout gör anrop ge upp efter 10sek utan något svar.
+        )  
         weather_data.raise_for_status()  # 400 och 500 skapas här
         return weather_data.json()
     except requests.exceptions.RequestException as error:
-        print("FEL:", error)
+        print("API request didn't work:", error)
         return None

@@ -1,50 +1,53 @@
 
-<div class="card shadow-sm p-4 my-4">
-<title>Välj en datum att filtrera på</title>
 
-<form method="POST" action="{{ url_for('filter_data') }}" class="w-100">
+<form method="POST" action="{{ url_for('filter_data') }}">
 
-    <div class="row g-3">
+    <div class="card shadow-sm mb-4">
 
+        <div class="card-body">
 
-            <div style="text-align: center;">
-                <select class="form-select form-select-lg" aria-label="Second select" id="city" name="city">
-                    <option selected>Välj en stad:</option>
+            <div class="text-center">
 
-                <option value="Stockholm">Stockholm
-                    {% if selected_city == "Stockholm" %} selected {% endif %}>
+                <select class="form-select form-select-lg" aria-label="Choose a city" id="city" name="city">
+                    
+                <option value="">Choose a city:</option>
+
+                <option value="Stockholm">
+                    {% if selected_city == "Stockholm" %}selected{% endif %}>
                     Stockholm
                 </option>
 
-                <option value="Göteborg">Göteborg
-                    {% if selected_city == "Göteborg" %} selected {% endif %}>
+                <option value="Göteborg">
+                    {% if selected_city == "Göteborg" %}selected{% endif %}>
                     Göteborg
                 </option>
 
-                <option value="Malmö">Malmö
+                <option value="Malmö">
                     {% if selected_city == "Malmö" %}selected{% endif %}>
                     Malmö
                 </option>
 
-                <option value="Umeå">Umeå
+                <option value="Umeå">
                     {% if selected_city == "Umeå" %}selected{% endif %}>
                     Umeå
                 </option>
 
-                <option value="Kiruna">Kiruna
+                <option value="Kiruna">
                     {% if selected_city == "Kiruna" %}selected{% endif %}>
                     Kiruna
                 </option>
 
     
 
-            </select>
+                </select>
 
-            <button type="submit" class="btn btn-primary btn-lg w-100">
-                Visa väderdata
-            </button>
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                    show forecast
+                </button>
+
+            </div>
         </div>
     </div>
 
 </form>
-</div>

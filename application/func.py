@@ -29,4 +29,3 @@ def get_weather_data(
     except requests.exceptions.RequestException as error:
         print("FEL:", error)
         return None
-
